@@ -23,6 +23,6 @@
     "eslint-plugin-unicorn": "^47.0.0"
   },
   "dependencies": {
-    "@cityssm/pdf-metadata-recorder": "^0.1.0-alpha.3"
+    "@cityssm/pdf-metadata-recorder": "^0.1.0-alpha.4"
   }
 }

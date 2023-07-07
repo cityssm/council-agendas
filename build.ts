@@ -29,6 +29,20 @@ const repositoryURLs = [
   'https://cityssm.github.io/council-agendas-1999'
 ]
 
+const wordsToRemove = [
+  'a',
+  'and',
+  'as',
+  'at',
+  'by',
+  'for',
+  'of',
+  'in',
+  'is',
+  'the',
+  'to'
+]
+
 async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
   const allAgendaMetadata: AgendaMetadata[] = []
 
@@ -54,6 +68,24 @@ async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
       for (let index = 4; index < fileNameSplit.length; index += 1) {
         agendaTitle += ' ' + fileNameSplit[index]
       }
+
+      // Clean up content
+
+      pdfMetadata.fullContent = pdfMetadata.fullContent
+        ?.toLowerCase()
+        .replaceAll(/[(),.-]/g, ' ')
+
+      for (const word of wordsToRemove) {
+        pdfMetadata.fullContent = pdfMetadata.fullContent?.replaceAll(
+          ` ${word} `,
+          ' '
+        )
+      }
+
+      pdfMetadata.fullContent = pdfMetadata.fullContent?.replaceAll(/ +/g, ' ')
+
+      const words = new Set(pdfMetadata.fullContent?.split(' '))
+      pdfMetadata.fullContent = [...words].join(' ')
 
       const agendaMetadata: AgendaMetadata = Object.assign(
         {

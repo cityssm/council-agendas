@@ -30,7 +30,9 @@
           ' ' +
           agenda.agendaTitle.toLowerCase() +
           ' ' +
-          (agenda.outline ?? []).join(' ').toLowerCase()
+          (agenda.outline ?? []).join(' ').toLowerCase() +
+          ' ' +
+          (agenda.fullContent ?? '')
       }
 
       let showAgenda = true
