@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Archived City of Sault Ste. Marie Council Agendas and Minutes</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://cdn.jsdelivr.net/npm/@cityssm/bulma-a11y@0.4.0/bulma-a11y.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      input,
+      select {
+        font-family: 'Barlow', sans-serif;
+      }
+
+      .input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+      }
+
+      .input[type="number"]::-webkit-inner-spin-button,
+      .input[type="number"]::-webkit-outer-spin-button {
+        margin: 0;
+        -webkit-appearance: none;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container p-2" style="max-width:700px">
+      <h1 class="title has-text-centered is-3">
+        Archived City of Sault Ste. Marie Council Agendas and Minutes
+      </h1>
+
+      <div class="message is-info">
+        <div class="message-body">
+          <p>
+            <strong>Note:</strong>
+            Several agendas have been compressed from their originally shared forms to meet the GitHub 100MB file size limit.
+          </p>
+          <p>
+            <strong>Note:</strong>
+            Older agendas may not meet current standards for accessibility.
+          </p>
+        </div>
+      </div>
+
+      <div class="box">
+        <form>
+          <div class="control has-icons-left">
+            <input class="input" id="search--searchString" name="searchString" placeholder="Search Agendas and Minutes" aria-label="Search Agendas and Minutes" />
+            <span class="icon is-left">
+              <i class="fas fa-search" aria-hidden="true"></i>
+            </span>
+          </div>
+        </form>
+      </div>
+
+      <div id="resultsContainer">
+        <p class="has-text-centered">
+          <i class="fas fa-5x fa-spinner fa-pulse" aria-hidden="true"></i><br />
+          Loading agenda data...
+        </p>
+      </div>
+    </main>
+    <footer class="hero is-dark is-small ">
+      <div class="hero-body">
+        <a href="https://github.com/cityssm/council-agendas">Browse Agenda Repositories</a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.min.js"></script>
+    <script src="search.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

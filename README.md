@@ -1,4 +1,6 @@
-# Archived City Council Agendas and Minutes
+# Archived City of Sault Ste. Marie Council Agendas and Minutes
+
+**[Search Proof of Concept](https://cityssm.github.io/council-agendas/)**
 
 **Note:**
 Several agendas have been compressed from their originally shared forms to meet the GitHub 100MB file size limit.
