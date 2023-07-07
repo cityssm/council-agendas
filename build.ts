@@ -31,16 +31,22 @@ const repositoryURLs = [
 
 const wordsToRemove = [
   'a',
+  'an',
   'and',
+  'are',
   'as',
   'at',
   'by',
   'for',
   'of',
+  'on',
   'in',
+  'into',
   'is',
+  'that',
   'the',
-  'to'
+  'to',
+  'with'
 ]
 
 async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
