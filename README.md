@@ -32,5 +32,5 @@ Older agendas may not meet current standards for accessibility.
 - [2003](https://github.com/cityssm/council-agendas-2003)
 - [2002](https://github.com/cityssm/council-agendas-2002)
 - [2001](https://github.com/cityssm/council-agendas-2001)
-- [2010](https://github.com/cityssm/council-agendas-2000)
+- [2000](https://github.com/cityssm/council-agendas-2000)
 - [1999](https://github.com/cityssm/council-agendas-1999)
