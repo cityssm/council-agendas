@@ -2,6 +2,8 @@ import fs from 'node:fs'
 
 import type * as recorderTypes from '@cityssm/pdf-metadata-recorder/types'
 
+import { textToSearchTerms, OPTIONS_ALL } from '@cityssm/text-to-search-terms'
+
 const repositoryURLs = [
   'https://cityssm.github.io/council-agendas-2022',
   'https://cityssm.github.io/council-agendas-2021',
@@ -29,26 +31,6 @@ const repositoryURLs = [
   'https://cityssm.github.io/council-agendas-1999'
 ]
 
-const wordsToRemove = [
-  'a',
-  'an',
-  'and',
-  'are',
-  'as',
-  'at',
-  'by',
-  'for',
-  'of',
-  'on',
-  'in',
-  'into',
-  'is',
-  'that',
-  'the',
-  'to',
-  'with'
-]
-
 async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
   const allAgendaMetadata: AgendaMetadata[] = []
 
@@ -64,7 +46,12 @@ async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
 
     allPdfMetadata.reverse()
 
-    for (const pdfMetadata of allPdfMetadata) {
+    for (const [pdfIndex, pdfMetadata] of allPdfMetadata.entries()) {
+      console.log(
+        `  - ${pdfIndex + 1} / ${allPdfMetadata.length} - ${
+          pdfMetadata.fileName
+        }`
+      )
       // Delete unused fields
 
       delete pdfMetadata.author
@@ -84,21 +71,10 @@ async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
 
       // Clean up content
 
-      pdfMetadata.fullContent = pdfMetadata.fullContent
-        ?.toLowerCase()
-        .replaceAll(/[(),.-]/g, ' ')
-
-      for (const word of wordsToRemove) {
-        pdfMetadata.fullContent = pdfMetadata.fullContent?.replaceAll(
-          ` ${word} `,
-          ' '
-        )
-      }
-
-      pdfMetadata.fullContent = pdfMetadata.fullContent?.replaceAll(/ +/g, ' ')
-
-      const words = new Set(pdfMetadata.fullContent?.split(' '))
-      pdfMetadata.fullContent = [...words].join(' ')
+      pdfMetadata.fullContent = textToSearchTerms(
+        pdfMetadata.fullContent ?? '',
+        OPTIONS_ALL
+      ).join(' ')
 
       const agendaMetadata: AgendaMetadata = Object.assign(
         {

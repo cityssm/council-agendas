@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { textToSearchTerms, OPTIONS_ALL } from '@cityssm/text-to-search-terms';
 const repositoryURLs = [
     'https://cityssm.github.io/council-agendas-2022',
     'https://cityssm.github.io/council-agendas-2021',
@@ -25,25 +26,6 @@ const repositoryURLs = [
     'https://cityssm.github.io/council-agendas-2000',
     'https://cityssm.github.io/council-agendas-1999'
 ];
-const wordsToRemove = [
-    'a',
-    'an',
-    'and',
-    'are',
-    'as',
-    'at',
-    'by',
-    'for',
-    'of',
-    'on',
-    'in',
-    'into',
-    'is',
-    'that',
-    'the',
-    'to',
-    'with'
-];
 async function buildAgendaMetadata() {
     const allAgendaMetadata = [];
     for (const repositoryURL of repositoryURLs) {
@@ -53,7 +35,8 @@ async function buildAgendaMetadata() {
         const allPdfMetadata = (await metadataResponse.json());
         console.log(`- Processing ${allPdfMetadata.length} agendas.`);
         allPdfMetadata.reverse();
-        for (const pdfMetadata of allPdfMetadata) {
+        for (const [pdfIndex, pdfMetadata] of allPdfMetadata.entries()) {
+            console.log(`  - ${pdfIndex + 1} / ${allPdfMetadata.length} - ${pdfMetadata.fileName}`);
             delete pdfMetadata.author;
             delete pdfMetadata.title;
             const fileNameSplit = pdfMetadata.fileName.slice(0, -4).split(/[ _-]+/);
@@ -62,15 +45,7 @@ async function buildAgendaMetadata() {
             for (let index = 4; index < fileNameSplit.length; index += 1) {
                 agendaTitle += ' ' + fileNameSplit[index];
             }
-            pdfMetadata.fullContent = pdfMetadata.fullContent
-                ?.toLowerCase()
-                .replaceAll(/[(),.-]/g, ' ');
-            for (const word of wordsToRemove) {
-                pdfMetadata.fullContent = pdfMetadata.fullContent?.replaceAll(` ${word} `, ' ');
-            }
-            pdfMetadata.fullContent = pdfMetadata.fullContent?.replaceAll(/ +/g, ' ');
-            const words = new Set(pdfMetadata.fullContent?.split(' '));
-            pdfMetadata.fullContent = [...words].join(' ');
+            pdfMetadata.fullContent = textToSearchTerms(pdfMetadata.fullContent ?? '', OPTIONS_ALL).join(' ');
             const agendaMetadata = Object.assign({
                 url: repositoryURL + '/' + pdfMetadata.fileName,
                 agendaDate,
