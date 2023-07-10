@@ -54,6 +54,8 @@ async function buildAgendaMetadata() {
         console.log(`- Processing ${allPdfMetadata.length} agendas.`);
         allPdfMetadata.reverse();
         for (const pdfMetadata of allPdfMetadata) {
+            delete pdfMetadata.author;
+            delete pdfMetadata.title;
             const fileNameSplit = pdfMetadata.fileName.slice(0, -4).split(/[ _-]+/);
             const agendaDate = fileNameSplit[0] + '-' + fileNameSplit[1] + '-' + fileNameSplit[2];
             let agendaTitle = fileNameSplit[3];

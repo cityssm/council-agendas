@@ -65,6 +65,13 @@ async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
     allPdfMetadata.reverse()
 
     for (const pdfMetadata of allPdfMetadata) {
+      // Delete unused fields
+
+      delete pdfMetadata.author
+      delete pdfMetadata.title
+
+      // Parse the file name
+
       const fileNameSplit = pdfMetadata.fileName.slice(0, -4).split(/[ _-]+/)
 
       const agendaDate =
