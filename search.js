@@ -106,7 +106,19 @@
         });
     }
     loadMetadata();
-    searchStringElement.addEventListener('keyup', renderAgendas);
+    function debounce(function_, timeout = 300) {
+        let timer;
+        return (...arguments_) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                function_.apply(this, arguments_);
+            }, timeout);
+        };
+    }
+    const debouncedRenderAgendas = debounce(() => {
+        renderAgendas();
+    });
+    searchStringElement.addEventListener('keyup', debouncedRenderAgendas);
     document.querySelector('form')?.addEventListener('submit', (formEvent) => {
         formEvent.preventDefault();
         renderAgendas();
