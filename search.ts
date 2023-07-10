@@ -33,6 +33,8 @@
           (agenda.outline ?? []).join(' ').toLowerCase() +
           ' ' +
           (agenda.fullContent ?? '')
+
+        delete agenda.fullContent
       }
 
       let showAgenda = true
