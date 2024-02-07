@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import { textToSearchTerms, OPTIONS_ALL } from '@cityssm/text-to-search-terms';
 const repositoryURLs = [
+    'https://cityssm.github.io/council-agendas-2023',
     'https://cityssm.github.io/council-agendas-2022',
     'https://cityssm.github.io/council-agendas-2021',
     'https://cityssm.github.io/council-agendas-2020',

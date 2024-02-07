@@ -1,10 +1,10 @@
 import fs from 'node:fs'
 
 import type * as recorderTypes from '@cityssm/pdf-metadata-recorder/types'
-
-import { textToSearchTerms, OPTIONS_ALL } from '@cityssm/text-to-search-terms'
+import { OPTIONS_ALL, textToSearchTerms } from '@cityssm/text-to-search-terms'
 
 const repositoryURLs = [
+  'https://cityssm.github.io/council-agendas-2023',
   'https://cityssm.github.io/council-agendas-2022',
   'https://cityssm.github.io/council-agendas-2021',
   'https://cityssm.github.io/council-agendas-2020',

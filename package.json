@@ -13,17 +13,11 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@types/node": "^20.4.0",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "eslint-config-standard-with-typescript": "^36.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-unicorn": "^47.0.0"
+    "@cityssm/pdf-metadata-recorder": "^0.1.0-alpha.4",
+    "@types/node": "^20.11.16",
+    "eslint-config-cityssm": "^1.4.1"
   },
   "dependencies": {
-    "@cityssm/pdf-metadata-recorder": "^0.1.0-alpha.4",
-    "@cityssm/text-to-search-terms": "^0.1.0"
+    "@cityssm/text-to-search-terms": "^0.2.2"
   }
 }
