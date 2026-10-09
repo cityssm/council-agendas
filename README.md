@@ -8,10 +8,11 @@ Several agendas have been compressed from their originally shared forms to meet 
 **Note:**
 Older agendas may not meet current standards for accessibility.
 
-[Visit SaultSteMarie.ca for current and recent City Council Agendas.](https://saultstemarie.ca/City-Hall/City-Departments/City-Clerk/Council-Agendas-and-Minutes.aspx)
+[Visit SaultSteMarie.ca for current and recent City Council Agendas.](https://saultstemarie.ca/government/city-council/council-agendas-minutes-and-schedule/)
 
 ## Years
 
+- [2024](https://github.com/cityssm/council-agendas-2024)
 - [2023](https://github.com/cityssm/council-agendas-2023)
 - [2022](https://github.com/cityssm/council-agendas-2022)
 - [2021](https://github.com/cityssm/council-agendas-2021)

@@ -4,6 +4,7 @@ import type * as recorderTypes from '@cityssm/pdf-metadata-recorder/types'
 import { OPTIONS_ALL, textToSearchTerms } from '@cityssm/text-to-search-terms'
 
 const repositoryURLs = [
+  'https://cityssm.github.io/council-agendas-2024',
   'https://cityssm.github.io/council-agendas-2023',
   'https://cityssm.github.io/council-agendas-2022',
   'https://cityssm.github.io/council-agendas-2021',
@@ -95,3 +96,15 @@ async function buildAgendaMetadata(): Promise<AgendaMetadata[]> {
 const agendaMetadata = await buildAgendaMetadata()
 
 fs.writeFileSync('metadata.json', JSON.stringify(agendaMetadata, undefined, 2))
+
+fs.writeFileSync(
+  'sitemap.html',
+  '<html><body><ul>' +
+    agendaMetadata
+      .map(
+        (metadata) =>
+          `<li><a href="${metadata.url}">${metadata.agendaDate} - ${metadata.agendaTitle}</a></li>`
+      )
+      .join('\n') +
+    '</ul></body></html>'
+)
