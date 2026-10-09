@@ -12,6 +12,7 @@ Older agendas may not meet current standards for accessibility.
 
 ## Years
 
+- [2025](https://github.com/cityssm/council-agendas-2025)
 - [2024](https://github.com/cityssm/council-agendas-2024)
 - [2023](https://github.com/cityssm/council-agendas-2023)
 - [2022](https://github.com/cityssm/council-agendas-2022)

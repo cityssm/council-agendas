@@ -14,10 +14,14 @@
   "private": true,
   "devDependencies": {
     "@cityssm/pdf-metadata-recorder": "^0.1.0-alpha.4",
-    "@types/node": "^20.11.16",
-    "eslint-config-cityssm": "^1.4.1"
+    "@types/node": "^26.6.5",
+    "eslint-config-cityssm": "^57.2.0",
+    "prettier-config-cityssm": "^2.2.0"
   },
   "dependencies": {
     "@cityssm/text-to-search-terms": "^0.2.2"
+  },
+  "allowScripts": {
+    "canvas@2.11.2": true
   }
 }
